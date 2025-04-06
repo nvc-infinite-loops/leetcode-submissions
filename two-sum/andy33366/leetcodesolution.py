@@ -11,10 +11,11 @@ class Solution(object):
         for i in range(len(nums)):
 
             #if complement is in the list, skips the rest
-            compliment = target - i
+            compliment = target - nums[i]
+            if ((compliment in nums) and (compliment != nums[i])):
+                answer = [i, nums.index(compliment)]
+                break
 
-            if compliment in nums:
-                answer = [i, compliment]
             #else, continue with the brute force
             else:
                 for j in range(i+1, len(nums)):
@@ -22,3 +23,4 @@ class Solution(object):
                         answer = [i, j]
 
         return answer
+
